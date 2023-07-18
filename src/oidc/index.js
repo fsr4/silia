@@ -1,19 +1,24 @@
-import {Provider} from "oidc-provider";
 import fs from "fs";
-import {testClient} from "./config/clients.js";
 import {defaultResource, getResourceServerInfo} from "./resource-indicators.js";
 import {claims, findAccount} from "./account-data.js";
 
 const jwks = JSON.parse(fs.readFileSync("jwks.json", { encoding: "utf-8" }));
 
+const registrationToken = process.env.REGISTRATION_TOKEN;
+
+if (!registrationToken) {
+    console.log("Environment variable REGISTRATION_TOKEN is not set. Exiting...");
+    process.exit(0);
+}
+
 const configuration = {
-    clients: [testClient],
     extraClientMetadata: {
-        properties: ["allowedResources"]
+        properties: ["allowed_resources"]
     },
     features: {
         registration: {
-            enabled: true
+            enabled: true,
+            initialAccessToken: registrationToken
         },
         devInteractions: {
             enabled: false
@@ -37,6 +42,4 @@ const configuration = {
     claims: claims
 };
 
-const provider = new Provider("http://localhost:9999", configuration);
-
-export default provider;
+export default configuration;

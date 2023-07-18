@@ -1,0 +1,155 @@
+@font-face {
+    font-family: "HTWBerlin Office";
+    src:
+            local("HTWBerlin Office"),
+            url("/HTWBerlinOffice.woff2") format("woff");
+}
+
+html,
+body {
+    height: 100%;
+    font-family: 'HTWBerlin Office', 'Verdana', sans-serif;
+    background: #edf5df;
+}
+
+.btn-primary {
+    --bs-btn-bg: rgb(118, 185, 0);
+    --bs-btn-border-color: rgb(118, 185, 0);
+    --bs-btn-hover-bg: rgb(111, 173, 2);
+    --bs-btn-hover-border-color: rgb(97, 152, 0);
+    --bs-btn-active-bg: rgb(102, 159, 2);
+    --bs-btn-active-border-color: rgb(96, 150, 0);
+    --bs-btn-disabled-bg: rgb(118, 185, 0);
+    --bs-btn-disabled-border-color: rgb(118, 185, 0);
+}
+
+.form-signin {
+    max-width: 450px;
+    padding: 1rem;
+}
+
+.form-signin .form-floating:focus-within {
+    z-index: 2;
+}
+
+.form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.login-card + .login-card {
+    padding-top: 10px;
+}
+
+.login-card h1 {
+    font-weight: 100;
+    text-align: center;
+    font-size: 2.3em;
+}
+
+.login-card h1 + p {
+    font-weight: 100;
+    text-align: center;
+}
+
+.login-card [type=submit] {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.login-card input[type=text], input[type=email], input[type=password] {
+    height: 44px;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 10px;
+    -webkit-appearance: none;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    border-top: 1px solid #c0c0c0;
+    padding: 0 8px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.login {
+    text-align: center;
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    height: 36px;
+    padding: 0 8px;
+}
+
+.login-submit {
+    border: 0;
+    color: #fff;
+    text-shadow: 0 1px rgba(0,0,0,0.1);
+    background-color: #4d90fe;
+}
+
+.login-card a {
+    text-decoration: none;
+    color: #666;
+    font-weight: 400;
+    text-align: center;
+    display: inline-block;
+    opacity: 0.6;
+}
+
+.login-help {
+    width: 100%;
+    text-align: center;
+    font-size: 0.8em;
+}
+
+.login-client-image img {
+    margin-bottom: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+}
+
+.login-card input[type=checkbox] {
+    margin-bottom: 10px;
+}
+
+.login-card label {
+    color: #999;
+}
+
+ul {
+    font-weight: 100;
+    padding-left: 1em;
+    list-style-type: circle;
+}
+
+li + ul, ul + li, li + li {
+    padding-top: 0.3em;
+}
+
+button {
+    cursor: pointer;
+}
+
+footer {
+    font-size: 0.8em;
+}
+
+footer a {
+    text-decoration: none;
+}
+
+.form-check-input:checked {
+    background-color: rgb(118, 185, 0);
+    border-color: rgb(118, 185, 0);
+}

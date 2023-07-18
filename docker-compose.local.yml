@@ -1,0 +1,21 @@
+version: "3.7"
+
+services:
+
+  op:
+    build:
+      target: build
+    ports:
+      - "9229:9229"
+    volumes:
+      - ./:/app/
+    networks:
+      - auth
+
+  db:
+    ports:
+      - "27017:27017"
+
+networks:
+  auth:
+    external: true

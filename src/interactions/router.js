@@ -1,15 +1,18 @@
-import Router from "@koa/router";
+import KoaRouter from "@koa/router";
 import {noCache} from "../utils.js";
-import Interactions from "./controller.js";
+import createInteractions from "./controller.js";
 import bodyParser from "koa-bodyparser";
 
-const router = new Router();
+export default class Router extends KoaRouter {
+    constructor(provider) {
+        super();
 
-const parse = bodyParser();
+        const parse = bodyParser();
+        const interactions = createInteractions(provider);
 
-router.get('/interaction/:uid', noCache, Interactions.authorize);
-router.post('/interaction/:uid/login', noCache, parse, Interactions.login);
-router.post('/interaction/:uid/confirm', noCache, parse, Interactions.confirm);
-router.get('/interaction/:uid/abort', noCache, Interactions.abort);
-
-export default router;
+        this.get('/interaction/:uid', noCache, interactions.authorize);
+        this.post('/interaction/:uid/login', noCache, parse, interactions.login);
+        this.post('/interaction/:uid/confirm', noCache, parse, interactions.confirm);
+        this.get('/interaction/:uid/abort', noCache, interactions.abort);
+    }
+}

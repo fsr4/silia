@@ -18,7 +18,10 @@ export function getResourceServerInfo(ctx, resourceIndicator, client) {
     if (!resourceServers.has(resourceIndicator))
         throw new errors.InvalidTarget();
 
-    if (client.allowedResources.indexOf(resourceIndicator) === -1)
+    if (client.allowed_resources === undefined)
+        return resourceServers.get(defaultResourceServer);
+
+    if (!Array.isArray(client.allowed_resources) || client.allowed_resources.indexOf(resourceIndicator) === -1)
         throw new InvalidResourceIndicator();
 
     return resourceServers.get(resourceIndicator);

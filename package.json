@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "watch": "nodemon --inspect=0.0.0.0:9229 src/index.js",
     "start": "node src/index.js",
     "generate-keys": "node tools/generate-keys.js"
   },
@@ -13,13 +14,18 @@
   "license": "ISC",
   "dependencies": {
     "@koa/router": "^10.1.1",
+    "@ladjs/koa-views": "^9.0.0",
     "dotenv": "^16.0.0",
-    "ejs": "^3.1.6",
-    "jose": "^4.3.8",
+    "ejs": "^3.1.9",
+    "jose": "^4.14.4",
     "koa": "^2.13.4",
     "koa-bodyparser": "^4.3.0",
-    "koa-views": "^8.0.0",
+    "koa-static": "^5.0.0",
     "ldapauth-fork": "^5.0.2",
+    "mongodb": "^4.10.0",
     "oidc-provider": "^7.10.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
   }
 }

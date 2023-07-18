@@ -18,23 +18,13 @@ export function ldapDateToJSDate(ldapDate) {
     return new Date(chars.join(""));
 }
 
-const groupMap = {
-    "F4-IMI-B-STUD": "IMI-B",
-    "F4-IMI-M-STUD": "IMI-M",
-};
-
-const groupStartIndicator = "F4";
-const groupEndIndicator = "STUD";
-
 export function ldapGroupsToMajor(ldapGroups) {
     for (const groupString of ldapGroups) {
-        const groupStartIndex = groupString.indexOf(groupStartIndicator);
-        const group = groupString.substr(
-            groupStartIndex,
-            groupString.indexOf(groupEndIndicator) + groupEndIndicator.length - groupStartIndex
-        );
-        const mappedGroup = groupMap[group];
-        if (mappedGroup) return mappedGroup;
+        const groupMatches = groupString.match(/=GP-F4-(.+-[BM])-STUD/);
+        if (groupMatches.length !== 2)
+            continue;
+        return groupMatches[1];
     }
+    console.log(`Unsupported group encountered: ${JSON.stringify(ldapGroups)}`);
     return null;
 }

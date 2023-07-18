@@ -1,0 +1,30 @@
+version: "3.7"
+
+services:
+
+  op:
+    build: .
+    image: fsr4/oidc-provider:latest
+    ports:
+      - "9999:9999"
+    networks:
+      - db
+    environment:
+      - MONGODB_URI=${MONGODB_URI}
+      - LDAP_URL=${LDAP_URL}
+      - LDAP_SEARCH_BASE=${LDAP_SEARCH_BASE}
+      - DEBUG=*
+
+  db:
+    image: mongo:bionic
+    volumes:
+      - db-data:/data/db
+    networks:
+      - db
+
+volumes:
+  db-data:
+
+
+networks:
+  db:
